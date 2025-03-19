@@ -26,6 +26,7 @@ app.get("/api/v1/peliculas", (req, res) => {
 
 });
 
+
 app.listen(port, () => {
     console.log(`Escuchando por el puerto ${port}`)
 })

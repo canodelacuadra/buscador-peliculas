@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -8,11 +8,33 @@
 </head>
 
 <body>
-    <h1>Listado de peliculas</h1>
+    <h2>Listado de peliculas</h2>
+    <ul id="peliculas">
+
+    </ul>
+    <h2>Listado de directores</h2>
+    <ul id="directores">
+    
+    </ul>
+    <h2>Listado de generos</h2>
+    <ul id="generos">
+    
+    </ul>
+
     <script>
-        fetch('/api/v1/peliculas')
+        const resultados = document.getElementById('peliculas');
+        const url = '/api/v1/peliculas';
+        fetch(url)
             .then(response => response.json())
-            .then(data => console.log(data))
+            .then(data => {
+                //console.log(data);
+                data.forEach(pelicula => {
+                    const li = document.createElement('li');
+                    li.textContent = pelicula.titulo;
+                    resultados.appendChild(li);
+                });
+            }
+            )
             .catch(err => console.error(err))
 
     </script>
